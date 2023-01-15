@@ -1,0 +1,86 @@
+%-----------------------------------------------------------------------------%
+\chapter{\babSatu}
+\label{bab:1}
+%-----------------------------------------------------------------------------%
+Pada bab ini akan dijelaskan mengenai latar belakang, rumusan masalah, tujuan penelitian, batasan penelitian, dan sistematika penulisan penelitian.
+
+
+%-----------------------------------------------------------------------------%
+\section{Latar Belakang}
+\label{sec:latarBelakang}
+%-----------------------------------------------------------------------------%
+Dalam ekosistem pengembangan perangkat lunak, \deployment adalah proses untuk membuat aplikasi menjadi tersedia untuk digunakan oleh pengguna. Ada banyak cara yang dapat dilakukan oleh pengembang aplikasi untuk melakukan \deploymentdot. Salah satu cara untuk melakukan \deployment adalah dengan meletakkan perangkat lunak pada layanan yang menyediakan Kubernetes. 
+
+Kubernetes adalah platform yang dipakai untuk mengelola satu atau lebih kontainer dalam suatu kumpulan \textit{server}. Kontainer sendiri adalah alat yang dapat dipakai untuk memvirtualisasikan suatu sistem operasi perangkat lunak agar dapat mengisolasi perangkat lunak yang di \deploy dari perangkat lunak lain yang berjalan di dalam suatu server.
+
+Untuk melakukan \textit{deployment} dengan Kubernetes, kita harus membuat spesifikasi untuk beberapa modul seperti: Deployment, Service, dan Ingress. Isi di dalam spesifikasi di atas sering kali terhubung antara satu sama lain. Artinya jika kita ingin mengubah suatu variabel, maka kita harus mengubah semua variabel lain yang terikat dengan variabel tersebut. Hal ini kurang efektif dan dapat menjadi penyebab masalah. Untuk mengatasi masalah tersebut terdapat aplikasi yang bernama helm.
+
+Helm adalah aplikasi yang dapat dipakai untuk mengelola berkas spesifikasi Kubernetes. Dengan helm, kita dapat menambahkan variabel pada berkas spesifikasi. Semua variabel akan digantikan oleh \textit{templating engine} dengan variabel yang sudah kita definisikan pada berkas sumber. Artinya jika kita perlu mengubah nilai yang terikat pada banyak tempat, kita hanya perlu mengubah sebuah nilai pada berkas sumber.
+
+Helm dapat dipakai untuk mengelola \textit{deployment} banyak perangkat lunak. Pengoperasian helm umumnya dilakukan melalui \textit{Command Line Interface}(CLI). Helm juga memiliki API yang dapat dipakai untuk mengendalikan \textit{deployment}. Ada beberapa aplikasi yang telah dikembangkan untuk dapat mengintegrasikan Helm API, seperti Terraform.
+
+Saat ini, tim data dari PT Gudang Ada Globalindo(GudangAda) menggunakan Terraform untuk mengendalikan microservice dari \f{data warehouse}. Tim data GudangAda juga menggunakan Vault sebagai penyimpanan data rahasia dan Amazon Kinesis sebagai \textit{message broker}. Pada kasus tim data GudangAda, ada banyak \textit{deployment} yang memiliki spesifikasi yang mirip, sehingga fitur \textit{templating} sangat menarik untuk dimiliki.
+
+Tim data GudangAda sedang mencari cara lain untuk dapat mengontrol \textit{microservice} yang dimiliki. Penulis tertarik dalam penggunaan aplikasi yang menggunakan \textit{HTTP request} untuk mengendalikan \textit{deployment} pada Helm. Menggunakan \textit{HTTP request} untuk melayani proses \textit{deployment} Helm memiliki beberapa keuntungan yaitu akses ke aplikasi menjadi lebih mudah, dan ke depannya dapat dikembangkan \textit{graphical user interface} dalam bentuk \textit{website} yang akan mempermudah pengoperasian aplikasi. Setelah mengimplementasikan Helm ke dalam aplikasi yang dibuat, penulis juga dapat mencoba untuk menggabungkan aplikasi lain seperti integrasi dengan Vault dan Amazon Kinesis, dan juga dapat mengembangkan fitur \textit{templating}.
+
+
+
+
+%-----------------------------------------------------------------------------%
+\section{Rumusan Masalah}
+\label{sec:masalah}
+%-----------------------------------------------------------------------------%
+Berikut merupakan rumusan masalah yang penulis hasilkan dari penjelasan latar belakang yang telah dijelaskan pada subbab sebelumnya:
+
+Saat ini, tidak ada aplikasi yang dapat melayani proses \textit{deployment} melalui \textit{HTTP request} yang masih aktif dirawat dan terbuka untuk publik. Mengintegrasikan fitur helm dengan aplikasi pihak ketiga seperti Vault dan Amazon Kinesis masih dilakukan secara manual. Proses \textit{deployment} Helm chart yang memiliki spesifikasi mirip terkesan redundan.
+
+\section{Pertanyaan Penelitian}
+\label{sec:pertanyaan Penelitian}
+Berikut merupakan pertanyaan penelitian yang penulis hasilkan dari rumusan masalah yang telah dijelaskan pada subbab sebelumnya:
+\begin{enumerate}
+    \item Apakah proses \deployment helm dapat diintegrasikan dengan aplikasi yang bekerja melalui \textit{HTTP request}?
+    \item Jika integrasi pada pertanyaan pertama dapat dilakukan, apakah dapat dilakukan juga integrasi dengan \textit{service} lain seperti Vault dan Amazon Kinesis?
+    \item Bagaimana proses \textit{deployment} Helm Chart dengan \textit{templating} pada aplikasi yang dikembangkan jika dibandingkan dengan menggunakan Terraform?
+\end{enumerate}
+%-----------------------------------------------------------------------------%
+\section{Tujuan Penelitian}
+\label{sec:tujuamPenelitian}
+%-----------------------------------------------------------------------------%
+Berikut ini adalah hasil yang penulis harapkan dari penelitian yang dilakukan:
+\begin{enumerate}
+	\item Mengumpulkan kebutuhan-kebutuhan mengenai proses \textit{deployment} helm dan fitur lain yang terkait dalam proses \textit{deployment} pada PT Gudang Ada Globalindo.
+	\item Merancang desain aplikasi yang dapat memenuhi kebutuhan perusahaan sesuai dengan kebutuhan yang telah dikumpulkan.
+	\item Membuat aplikasi yang sesuai dengan rancangan dan dapat dipakai untuk menggantikan infrastruktur yang sedang dipakai saat ini.
+\end{enumerate}
+
+%-----------------------------------------------------------------------------%
+\section{Batasan Permasalahan}
+\label{sec:batasanMasalah}
+%-----------------------------------------------------------------------------%
+Berikut ini adalah asumsi yang digunakan sebagai batasan penelitian ini:
+\begin{enumerate}
+	\item Pengembangan aplikasi yang dilakukan pada penelitian akan menggunakan spesifikasi yang sudah ditentukan terlebih dahulu oleh PT Gudang Ada Globalindo.
+	\item Pengembangan aplikasi yang dilakukan pada penelitian hanya mencakup bagian \f{back-end} dari keseluruhan aplikasi.
+	\item Pengembangan aplikasi yang dilakukan pada penelitian hanya sampai tahapan \textit{Minimum Viable Product}(MVP) saja sehingga mungkin saja masih ada fitur kurang.
+\end{enumerate}
+
+    %-----------------------------------------------------------------------------%
+\section{Sistematika Penulisan}
+\label{sec:sistematikaPenulisan}
+%-----------------------------------------------------------------------------%
+Sistematika penulisan laporan adalah sebagai berikut:
+\begin{itemize}
+	\item Bab 1 \babSatu \\
+	    Bagian pendahuluan memaparkan secara singkat penjelasan terkait latar belakang, perumusan masalah, tujuan penelitian, batasan penelitian, dan sistematika penulisan.
+	\item Bab 2 \babDua \\
+	    Bagian tinjauan pustaka memuat studi akan kepustakaan serta teori-teori yang melandasi proses penelitian serta implementasi yang dilakukan meliputi: kontainer, kubernetes, helm, vault, dan Amazon Kinesis.
+	\item Bab 3 \babTiga \\
+	    Bagian analisis dan perancangan menjelaskan secara detail proses analisis dan perancangan yang dilakukan melalui proses identifikasi kebutuhan, identifikasi fitur, analisis perbandingan, hingga perancangan desain.
+arsitektur
+	\item Bab 4 \babEmpat \\
+		Bagian implementasi menjelaskan secara detail tahapan-tahapan implementasi yang dilakukan yaitu: instalasi kebutuhan pengembangan, implementasi program, implementasi kebutuhan deployment, dan proses deployment.
+	\item Bab 5 \babLima \\
+	    Bagian pengujian membahas tentang pengujian dari penelitian yang dikerjakan yang mencakup: mencoba melakukan deployment, mencoba fitur templating, mencoba melakukan pengambilan variabel rahasia, dan membuat perubahan pada deployment yang telah dibuat.
+	\item Bab 6 \kesimpulan \\
+	    Bagian penutup mencakup kesimpulan akhir penelitian dan saran untuk penelitian selanjutnya.
+\end{itemize}

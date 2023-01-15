@@ -1,0 +1,31 @@
+%---------------------------------------------------------------
+\chapter{\kesimpulan}
+\label{bab:6}
+%---------------------------------------------------------------
+Pada bab ini, akan dipaparkan kesimpulan penelitian dan saran untuk penelitian berikut-nya.
+
+
+%---------------------------------------------------------------
+\section{Kesimpulan}
+\label{sec:kesimpulan}
+%---------------------------------------------------------------
+Berikut ini adalah kesimpulan terkait pekerjaan yang dilakukan dalam penelitian ini:
+\begin{enumerate}
+	\item \bo{Integrasi Helm} \\
+	Proses \textit{deployment} helm dapat diintegrasikan dengan aplikasi yang bekerja melalui \textit{HTTP request} dengan mengimplementasikan aplikasi yang memakai Helm \textit{API}. Aplikasi tersebut akan diimplementasikan dengan bahasa pemrograman Golang. Aplikasi akan menerima \textit{HTTP request} dari pengguna, setelah itu akan melakukan \textit{parsing data}, melakukan \textit{preprocessing}, dan terakhir akan meneruskannya ke API milik Helm untuk di \textit{deploy}.
+	\item \bo{Integrasi Vault dan Amazon Kinesis} \\
+	Dari rancangan pada bagian \ref{sec:vaultEngine} untuk Vault dan bagian \ref{sec:perancanganArsitektur} untuk Amazon Kinesis, serta implementasi pada bagian \ref{sec:initVault} dan \ref{sec:initKinesis}, dan telah diujikan fitur-fiturnya pada bab \ref{bab:5}. Dapat disimpulkan bahwa Vault dan Amazon Kinesis dapat diintegrasikan dengan aplikasi yang dikerjakan untuk membantu proses \textit{deployment}.
+	\item \bo{Analisis terhadap Terraform} \\
+    Pada bagian \ref{sec:terraform} dibuat spesifikasi pada Terraform dan dilakukan \textit{deployment} pada bagian \ref{sec:mergeTerraform}, proses tersebut membutuhkan pengguna untuk mendefinisikan 4 berkas untuk membuat satu buah \textit{deployment}. Sedangkan pada bagian \ref{sec:templateTest} hanya dibutuhkan 1 \textit{request} untuk membuat \textit{template} dan 1 \textit{request} untuk melakukan \textit{deployment}. Jika terdapat 5 \textit{deployment} dengan spesifikasi yang mirip, Terraform membutuhkan pengguna untuk menspesifikasikan 20 berkas, namun aplikasi yang dikembangkan hanya membutuhkan 6 \textit{HTTP request} untuk melakukan \textit{deployment} yang sama. Sehingga dapat disimpulkan bahwa penggunaan \textit{templating} pada aplikasi dapat mensimplifikasi proses \textit{deployment} dibandingkan dengan Terraform.
+\end{enumerate}
+
+%---------------------------------------------------------------
+\section{Saran}
+\label{sec:saran}
+%---------------------------------------------------------------
+Berdasarkan hasil penelitian ini, berikut ini adalah saran untuk pengembangan penelitian berikutnya:
+\begin{enumerate}
+	\item Kontrol aplikasi hanya dapat dilakukan pada Kubernetes Cluster yang sama pada tempat aplikasi tersebut berjalan. Hal ini dapat memaksa untuk dibuatnya banyak \textit{instance} aplikasi pada tiap Kubernetes Cluster. Kontrol antar cluster diharapkan untuk dapat diimplementasi untuk dapat menangani hal tersebut.
+	\item Belum adanya sistem autentikasi dalam penggunaan aplikasi. Hal ini dapat menyebabkan siapapun yang dapat melakukan \textit{HTTP Request} ke aplikasi memiliki akses penuh kedalam aplikasi dan semua deployment yang dikontrol. Sistem autentikasi diharapkan untuk dapat diimplementasi untuk dapat menangani hal tersebut.
+	\item Belum adanya \textit{Graphical User Interface}(GUI). Pengguna harus membuat HTTP Request melalui aplikasi pihak ketiga seperti CURL maupun Postman untuk dapat mengakses aplikasi. \textit{Website Front-end }diharapkan untuk dapat diimplementasi untuk dapat menangani hal tersebut.
+\end{enumerate}

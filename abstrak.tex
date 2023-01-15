@@ -1,0 +1,29 @@
+%
+% Halaman Abstrak
+%
+% @author  Andreas Febrian
+% @version 2.00
+% @edit by Ichlasul Affan
+%
+
+\chapter*{Abstrak}
+\singlespacing
+
+\vspace*{0.2cm}
+
+\noindent \begin{tabular}{l l p{10cm}}
+	Nama&: & \penulis \\
+	Program Studi&: & \program \\
+	Judul&: & \judul \\
+\end{tabular} \\
+
+\vspace*{0.5cm}
+
+\noindent Tugas Akhir ini mengkaji tentang perancangan dan implementasi aplikasi yang menerima \textit{HTTP request} untuk melakukan \textit{deployment} Helm Chart sebagai proses pendukung pekerjaan pada tim data PT Gudang Ada Globalindo. Penulis memulai proses perancangan dengan berdiskusi dengan pengguna dari tim data untuk mengumpulkan kebutuhan, dari  hasil diskusi penulis juga mengetahui bahwa harus dilakukannya integrasi tambahan dengan aplikasi pihak ketiga seperti Vault, Amazon Kinesis, dan Amazon S3. Penulis mengimplementasikan rancangan aplikasi dengan menggunakan desain Controller-Service-Repository dengan menggunakan bahasa pemrograman Golang. Aplikasi akan menerima permintaan dari pengguna, dan akan melakukan \textit{templating} sebelum dilakukan \textit{deployment} dengan bantuan Helm API. Setelah selesai mengembangkan aplikasi, penulis melakukan 9 percobaan berdasarkan 10 kebutuhan  pengguna. Penelitian ini berhasil membentuk desain, mengimplementasikan, dan melakukan \textit{deployment} aplikasi pada sistem Kubernetes milik tim data GudangAda.\\
+
+\vspace*{0.2cm}
+
+\noindent \bo{Kata kunci:} \\ Perancangan dan Implementasi, Helm, \textit{Deployment}, Vault, Templating \\
+
+\onehalfspacing
+\newpage
